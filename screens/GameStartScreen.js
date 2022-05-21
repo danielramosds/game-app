@@ -3,6 +3,7 @@ import {useState} from "react";
 
 
 import PrimaryButton from "../components/PrimaryButton";
+import Constants from "../util/Constants";
 
 export default function ({onPickNumber}) {
     const [enteredNumber, setEnteredNumber] = useState('');
@@ -49,7 +50,7 @@ export default function ({onPickNumber}) {
 
 const styles = StyleSheet.create({
     wrapper: {
-        backgroundColor: '#46001e',
+        backgroundColor: Constants.primaryColor600,
         marginTop: 100,
         marginHorizontal: 24,
         borderRadius: 10,
@@ -61,9 +62,9 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         fontSize: 35,
-        borderColor: '#ddbb55',
+        borderColor: Constants.secondaryColor500,
         borderBottomWidth: 2,
-        color: '#ddbb55',
+        color: Constants.secondaryColor500,
         marginVertical: 10,
         fontWeight: "bold",
         textAlign: "center",

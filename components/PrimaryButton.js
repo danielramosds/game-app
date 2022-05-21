@@ -1,5 +1,7 @@
 import {Pressable, View, Text, StyleSheet} from "react-native";
 
+import Constants from "../util/Constants";
+
 export default function ({children, onPress}) { //it could also be props and called as props.childen and props.onPress
 
     return (
@@ -27,17 +29,17 @@ const styles = StyleSheet.create({
         flex: 1
     },
     btnPressableWrapper: {
-        backgroundColor: '#222',
+        backgroundColor: Constants.blackColor500,
         paddingVertical: 10,
         paddingHorizontal: 20,
     },
     btnTxt: {
         alignSelf: "center",
-        color: '#FFF',
+        color: Constants.whiteColer500,
         fontSize: 18
     },
     pressed: {
-        backgroundColor: '#444',
+        backgroundColor: Constants.blackColor400,
         opacity: 0.8,
     }
 
