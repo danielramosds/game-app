@@ -21,7 +21,7 @@ export default function () {
 
 const styles = StyleSheet.create({
     wrapper: {
-        backgroundColor: '#770033',
+        backgroundColor: '#46001e',
         marginTop: 100,
         marginHorizontal: 24,
         borderRadius: 10,
