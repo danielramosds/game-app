@@ -1,22 +1,18 @@
 import {Pressable, View, Text, StyleSheet} from "react-native";
 
-export default function (props) { //it could also be {children} instead of props
-
-    function btnPressHandler() {
-        console.log("d")
-    }
+export default function ({children, onPress}) { //it could also be props and called as props.childen and props.onPress
 
     return (
 
         <View style={styles.btnViewWrapper}>
             <Pressable
-                onPress={btnPressHandler}
+                onPress={onPress}
                 style={({pressed}) =>
                     pressed ?
                         [styles.btnPressableWrapper, styles.pressed] :
                         styles.btnPressableWrapper}
             >
-                <Text style={styles.btnTxt}>{props.children}</Text>
+                <Text style={styles.btnTxt}>{children}</Text>
             </Pressable>
         </View>
 

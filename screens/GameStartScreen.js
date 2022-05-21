@@ -1,7 +1,33 @@
-import {TextInput, View, StyleSheet} from 'react-native';
+import {TextInput, View, StyleSheet, Alert} from 'react-native';
+import {useState} from "react";
+
+
 import PrimaryButton from "../components/PrimaryButton";
 
-export default function () {
+export default function ({onPickNumber}) {
+    const [enteredNumber, setEnteredNumber] = useState('');
+
+    function numberInputHandler(enteredText) {
+        setEnteredNumber(enteredText);
+    }
+
+    function resetInputHandler() {
+        setEnteredNumber('');
+    }
+
+    function confirmInputHandler() {
+        const chosenNumber = parseInt(enteredNumber);
+        if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+            Alert.alert(
+                'Invalid Number',
+                'Enter a value between 1 and 99',
+                [{text: 'OK', style: 'destructive', onPress: resetInputHandler}])
+            return;
+        }
+
+        onPickNumber(chosenNumber);
+    }
+
     return (
         <View style={styles.wrapper}>
             <TextInput
@@ -10,10 +36,12 @@ export default function () {
                 keyboardType="numeric"
                 autoCapitalize="none"
                 autoCorrect={false}
+                onChangeText={numberInputHandler}
+                value={enteredNumber}
             />
             <View style={styles.btnArea}>
-                <PrimaryButton>Reset</PrimaryButton>
-                <PrimaryButton>Confirm</PrimaryButton>
+                <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+                <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
             </View>
         </View>
     );
@@ -40,8 +68,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
     },
-    btnArea:{
-        flexDirection:"row",
+    btnArea: {
+        flexDirection: "row",
     }
 
 });
