@@ -1,6 +1,6 @@
 import {Pressable, View, Text, StyleSheet} from "react-native";
 
-import Constants from "../util/Constants";
+import Constants from "../../util/Constants";
 
 export default function ({children, onPress}) { //it could also be props and called as props.childen and props.onPress
 
