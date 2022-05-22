@@ -5,7 +5,6 @@ import Constants from "../../util/Constants";
 export default function ({children, onPress}) { //it could also be props and called as props.childen and props.onPress
 
     return (
-
         <View style={styles.btnViewWrapper}>
             <Pressable
                 onPress={onPress}
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
     btnTxt: {
         alignSelf: "center",
         color: Constants.whiteColer500,
-        fontSize: 18
+        fontSize: 18,
     },
     pressed: {
         backgroundColor: Constants.blackColor400,
