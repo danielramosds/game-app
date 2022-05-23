@@ -1,9 +1,11 @@
-import {TextInput, View, StyleSheet, Alert} from 'react-native';
+import {TextInput, View, StyleSheet, Alert, Text} from 'react-native';
 import {useState} from "react";
 
 
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Constants from "../util/Constants";
+import Title from "../components/ui/Title";
+import Card from "../components/ui/Card";
 
 export default function ({onPickNumber}) {
     const [enteredNumber, setEnteredNumber] = useState('');
@@ -30,34 +32,35 @@ export default function ({onPickNumber}) {
     }
 
     return (
-        <View style={styles.wrapper}>
-            <TextInput
-                style={styles.numberInput}
-                maxLength={2}
-                keyboardType="numeric"
-                autoCapitalize="none"
-                autoCorrect={false}
-                onChangeText={numberInputHandler}
-                value={enteredNumber}
-            />
-            <View style={styles.btnArea}>
-                <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
-                <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
-            </View>
+        <View style={styles.rootContainer}>
+            <Title>GUESS MY NUMBER</Title>
+            <Card>
+                <Text style={styles.gameDescription}>Enter a number between 1 and 99</Text>
+                <TextInput
+                    style={styles.numberInput}
+                    maxLength={2}
+                    keyboardType="numeric"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onChangeText={numberInputHandler}
+                    value={enteredNumber}
+                />
+                <View style={styles.btnArea}>
+                    <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+                    <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+                </View>
+            </Card>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    wrapper: {
-        backgroundColor: Constants.primaryColor600,
+    rootContainer: {
+        flex: 1,
         marginTop: 100,
-        marginHorizontal: 24,
-        borderRadius: 10,
-        padding: 20,
-        alignItems: 'center'
-
+        alignItems: "center",
     },
+
     numberInput: {
         height: 50,
         width: 50,
@@ -71,6 +74,11 @@ const styles = StyleSheet.create({
     },
     btnArea: {
         flexDirection: "row",
+
+    },
+    gameDescription: {
+        color: Constants.whiteColer500,
+        fontSize: 16,
     }
 
 });

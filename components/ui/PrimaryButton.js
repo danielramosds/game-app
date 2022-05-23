@@ -22,10 +22,9 @@ export default function ({children, onPress}) { //it could also be props and cal
 
 const styles = StyleSheet.create({
     btnViewWrapper: {
-        borderRadius: 30,
+        borderRadius: 20,
         margin: 5,
         overflow: "hidden",
-        flex: 1
     },
     btnPressableWrapper: {
         backgroundColor: Constants.blackColor500,

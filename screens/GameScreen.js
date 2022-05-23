@@ -4,6 +4,8 @@ import {View, Text, StyleSheet, Alert} from "react-native";
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Card from "../components/ui/Card";
+import Constants from "../util/Constants";
 
 
 function generateRandomBetween(min, max, exclude) {
@@ -40,7 +42,7 @@ export default function ({userNumber, onGameOver}) {
         }
 
         if (direction === 'lower') {
-            maxValue = currentGuess - 1;
+            maxValue = currentGuess;
         }
         if (direction === 'higher') {
             minValue = currentGuess;
@@ -51,18 +53,18 @@ export default function ({userNumber, onGameOver}) {
     }
 
     return (
-        <View style={styles.screen}>
+        <Card>
             <Title>Opponent's Guest</Title>
             <NumberContainer>{currentGuess}</NumberContainer>
             <View>
-                <Text>Higher or lower?</Text>
+                <Text style={styles.question}>Higher or lower?</Text>
                 <View style={styles.btnAreaWrapper}>
                     <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryButton>
                     <PrimaryButton onPress={nextGuessHandler.bind(this, 'higher')}>+</PrimaryButton>
                 </View>
             </View>
 
-        </View>
+        </Card>
 
     )
 }
@@ -75,5 +77,9 @@ const styles = StyleSheet.create({
     },
     btnAreaWrapper: {
         flexDirection: "row",
+
+    },
+    question:{
+        color:Constants.whiteColer500,
     }
 })
